@@ -164,8 +164,7 @@ class vars:
         db_ver = f.read()
 
     # ASCII Art is a must...
-    # screen = random.randrange(1, 6)
-    screen = 3
+    screen = random.randrange(1, 6)
 
     if screen is 1:
         maldb_banner = "\n"
@@ -175,7 +174,7 @@ class vars:
         maldb_banner += "        oNNNMMMNNNNNNNNMMMNNNs      \n"
         maldb_banner += "     /oodMMdooyMMMMMMMMyoodMMdoo/   \ttheZoo "
         maldb_banner += version + "\n"
-        maldb_banner += "  `..dMMMMMy. :MMMMMMMM/  sMMMMMm..`\t DB ver. "
+        maldb_banner += "  `..dMMMMMy. :MMMMMMMM/  sMMMMMm..`\tDB ver. "
         maldb_banner += db_ver + "\n"
         maldb_banner += "  dmmMMMMMMNmmNMMMMMMMMNmmNMMMMMMmmm\n"
         maldb_banner += "  NMMyoodMMMMMMMMMMMMMMMMMMMMdoosMMM\t"
@@ -263,7 +262,7 @@ class vars:
         maldb_banner += "    |##XU:: :|\n"
         maldb_banner += "    |##Xn:: :|\t"
         maldb_banner += "theZoo " + version + "\n"
-        maldb_banner += "    |##XU:: :|\t  " + giturl + "\n"
+        maldb_banner += "    |##XU:: :|\t" + giturl + "\n"
         maldb_banner += "    |##XX:: :|\tauthors: " + authors + "\n"
         maldb_banner += "    |##XX:: :|\tmaintained by: "
         maldb_banner += ', '.join(maintainers) + "\n"
