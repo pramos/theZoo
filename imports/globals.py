@@ -209,7 +209,7 @@ class vars:
         maldb_banner += "              `-|__.--'\n"
 
     elif screen is 3:
-        maldb_banner = "            __  ___      __                               ____  ____\n"
+        maldb_banner = "           __  ___      __                               ____  ____\n"
         maldb_banner += "          /  |/  /___ _/ /      ______ _________        / __ \/ __ )\n"
         maldb_banner += "         / /|_/ / __ `/ / | /| / / __ `/ ___/ _ \______/ / / / __ |\n"
         maldb_banner += "        / /  / / /_/ / /| |/ |/ / /_/ / /  /  __/_____/ /_/ / /_/ /\n"
@@ -297,7 +297,7 @@ class vars:
         maldb_banner += "| |                                   | |\n"
         maldb_banner += "| |            T H E  Z O O           | |\n"
         maldb_banner += "| |   I S   G O O D   F O R   Y O U   | |\n"
-        maldb_banner += "| | _             %s                _ | |\n" % version
+        maldb_banner += "| | _             %s      _ | |\n" % version
         maldb_banner += "| |(+)                             (+)| |\n"
         maldb_banner += "| | ~                               ~ | |\n"
         maldb_banner += "|/ ----------------------------------- \|\n"
