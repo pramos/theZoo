@@ -1,23 +1,24 @@
 #!/usr/bin/env python
 
-    # Malware DB - the most awesome free malware database on the air
-    # Copyright (C) 2014, Yuval Nativ, Lahad Ludar, 5Fingers
+# Malware DB - the most awesome free malware database on the air
+# Copyright (C) 2014, Yuval Nativ, Lahad Ludar, 5Fingers
 
-    # This program is free software: you can redistribute it and/or modify
-    # it under the terms of the GNU General Public License as published by
-    # the Free Software Foundation, either version 3 of the License, or
-    #(at your option) any later version.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 
-    # This program is distributed in the hope that it will be useful,
-    # but WITHOUT ANY WARRANTY; without even the implied warranty of
-    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    # GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 
-    # You should have received a copy of the GNU General Public License
-    # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 import os
 import random
+
 
 class init:
 
@@ -53,7 +54,8 @@ class Completer:
 
     def complete(self, prefix, index):
         if prefix != self.prefix:
-            self.matchingCommand = [w for w in self.commands if w.startswith(prefix)
+            self.matchingCommand = [
+                w for w in self.commands if w.startswith(prefix)
                 ]
             self.prefix = prefix
         try:
@@ -67,16 +69,16 @@ class vars:
     version = "0.6.0 'Moat'"
     appname = "Malware DB"
     authors = "Yuval Nativ, Lahad Ludar, 5fingers"
-    maintainers = [ "Shahak Shalev", "Yuval Nativ" ]
+    maintainers = ["Shahak Shalev", "Yuval Nativ"]
     github_add = "https://www.github.com/ytisf/theZoo"
     licensev = "GPL v3.0"
 
     ############ DEBUGGING ###############
     #### SET TO ZERO BEFORE COMMIT #######
 
-        # DEBUG_LEVEL 0 = NO DEBUGGING
-        # DEBUG_LEVEL 1 = DEBUG DOWNLOADS
-        # DEBUG_LEVEL 2 = DEBUG SQL QUERIES
+    # DEBUG_LEVEL 0 = NO DEBUGGING
+    # DEBUG_LEVEL 1 = DEBUG DOWNLOADS
+    # DEBUG_LEVEL 2 = DEBUG SQL QUERIES
 
     DEBUG_LEVEL = 0
 

@@ -14,6 +14,7 @@ def _help():
     print("Please run with '%s filename'." % sys.argv[0])
     return
 
+
 def _Do(file_path):
     if not os.path.isfile(file_path):
         _help()

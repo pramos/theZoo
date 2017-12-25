@@ -1,23 +1,26 @@
 #!/usr/bin/env python
 
-    # Malware DB - the most awesome free malware database on the air
-    # Copyright (C) 2014, Yuval Nativ, Lahad Ludar, 5Fingers
+# Malware DB - the most awesome free malware database on the air
+# Copyright (C) 2014, Yuval Nativ, Lahad Ludar, 5Fingers
 
-    # This program is free software: you can redistribute it and/or modify
-    # it under the terms of the GNU General Public License as published by
-    # the Free Software Foundation, either version 3 of the License, or
-    #(at your option) any later version.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 
-    # This program is distributed in the hope that it will be useful,
-    # but WITHOUT ANY WARRANTY; without even the implied warranty of
-    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    # GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 
-    # You should have received a copy of the GNU General Public License
-    # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
 from os import remove, rename
+from imports import globals
+from imports import db_handler
+from imports.colors import *
 
 # Compatilibility to Python3
 if sys.version_info.major == 3:
@@ -28,9 +31,6 @@ elif sys.version_info.major == 2:
 else:
     sys.stderr.write("What kind of sorcery is this?!\n")
 
-from imports import globals
-from imports import db_handler
-from imports.colors import *
 
 class Updater:
 
@@ -46,14 +46,16 @@ class Updater:
                 return f.read()
         except IOError:
             print(
-                "No malware DB version file found.\nPlease try to git clone the repository again.\n")
+                "No malware DB version file found.\n" +
+                "Please try to git clone the repository again.\n"
+            )
             return 0
 
     def update_db(self, curr_db_version):
-        '''
+        """
         Just update the database from GitHub
         :return:
-        '''
+        """
         if globals.vars.DEBUG_LEVEL is 1:
             print(locals())
         response = urlopen(
@@ -85,7 +87,9 @@ class Updater:
 
         # get mal location
 
-        loc = self.db.query("SELECT LOCATION FROM MALWARES WHERE ID=?", id)[0][0]
+        loc = self.db.query(
+            "SELECT LOCATION FROM MALWARES WHERE ID=?", id
+        )[0][0]
 
         # get from git
 

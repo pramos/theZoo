@@ -1,23 +1,23 @@
 """readline.py -- Readline Alternative for Windows
 Copyright 2001, Chris Gonnerman and Alex Martelli
 """
-# 
+#
 # By obtaining, using, and/or copying this software and/or its
 # associated documentation, you agree that you have read, understood,
 # and will comply with the following terms and conditions:
-# 
+#
 # Permission to use, copy, modify, and distribute this software and its
 # associated documentation for any purpose and without fee is hereby
 # granted, provided that the above copyright notice appears in all
 # copies, and that both that copyright notice and this permission notice
 # appear in supporting documentation.
-# 
-# THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, 
-# INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS.  IN NO 
-# EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR 
-# CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF 
-# USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR 
-# OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
+#
+# THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+# INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS.  IN NO
+# EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+# CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+# USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+# OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
 # CREDITS:
@@ -28,9 +28,13 @@ Copyright 2001, Chris Gonnerman and Alex Martelli
 
 __version__ = "1.7"
 
-import sys, os, msvcrt, _rlsetup
+import sys
+import os
+import msvcrt
+import _rlsetup
 
 _history = []
+
 
 def set_history_length(n):
     global _history_length
@@ -39,29 +43,34 @@ def set_history_length(n):
     else:
         _history_length = n
 
+
 def get_history_length():
     if _history_length == sys.maxint:
         return -1
     return _history_length
 
-set_history_length(int(os.getenv('PYHISTMAX','-1')))
+
+set_history_length(int(os.getenv('PYHISTMAX', '-1')))
+
 
 def read_history_file(filename):
     def clean(s, p=['']):
-        if s==p[0]:
+        if s == p[0]:
             return 0
-        p[0]=s
+        p[0] = s
         return s
     fp = open(filename)
     all_lines = fp.read().splitlines()
     _history[:] = filter(clean, all_lines)[:_history_length]
     fp.close()
 
+
 def write_history_file(filename):
     fp = open(filename, "w")
     fp.write('\n'.join(_history+['']))
     fp.close()
-    
+
+
 _pyhistfile = os.getenv('PYHISTFILE', sys.prefix+'\\pyhist.txt')
 
 try:
@@ -91,16 +100,20 @@ _kstable = {
 
 _completer = None
 
+
 class _NullOutput:
     def write(self, s):
         pass
 
+
 debug = _NullOutput()
 # debug = open("debug.txt", "w")
+
 
 def BS(n):
     debug.write("BS(%d)\n" % n)
     output.write('\x08' * n)
+
 
 class ReadlineBuffer:
 
@@ -138,7 +151,7 @@ class ReadlineBuffer:
         if len(buf.s) > (buf.maxlen + buf.o):
             output.write(">\x08")
         BS(max(buf.maxlen - (buf.p - buf.o), 0))
-    
+
     def correct_offset(buf):
         new_o = buf.o
         while new_o and buf.p < (new_o + buf.step):
@@ -159,15 +172,18 @@ class ReadlineBuffer:
         else:
             buf.o = 0
         buf.rewrite_buffer()
-    
+
 # dummy functions
+
 
 def set_completer(function=None):
     global _completer
     _completer = function
 
+
 def parse_and_bind(line):
     pass
+
 
 def read_init_file(filename=None):
     pass
@@ -178,9 +194,11 @@ def read_init_file(filename=None):
 # Change to a true value to hide.
 _issued = None
 
-def readline(step = _step, maxlen = _maxlen, 
-    history = _history, histfile = _pyhistfile):
-    """readline(step, maxlen, history, histfile)
+
+def readline(step=_step, maxlen=_maxlen,
+        history=_history, histfile=_pyhistfile):
+    """
+    readline(step, maxlen, history, histfile)
     Read a line from the console.
 
     step:      Number of columns to side-scroll per step.
@@ -337,6 +355,7 @@ def readline(step = _step, maxlen = _maxlen,
             fp.close()
 
     return buf.s
+
 
 _rlsetup.install_readline(readline)
 

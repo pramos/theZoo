@@ -3,6 +3,7 @@ from imports import db_handler
 from imports.prettytable import PrettyTable
 from imports.colors import *
 
+
 class MuchSearch(object):
 
     def __init__(self):
@@ -10,12 +11,14 @@ class MuchSearch(object):
         self.names = [x.lower() for x in self.db.get_mal_names()]
         self.tags = [x.lower() for x in self.db.get_mal_tags()]
 
-    #:todo: make this more efficient
+    # :todo: make this more efficient
     def sort(self, args):
         self.hits = {}
         self.query = None
         self.param = None
-        self.prequery = "SELECT ID, TYPE, LANGUAGE, ARCHITECTURE, PLATFORM, NAME FROM MALWARES WHERE "
+        self.prequery = """SELECT
+                    ID, TYPE, LANGUAGE, ARCHITECTURE, PLATFORM, NAME
+                    FROM MALWARES WHERE """
         self.postquery = " COLLATE NOCASE"
         self.ar = []
         args = [x.lower() for x in args]
@@ -39,7 +42,9 @@ class MuchSearch(object):
 
         if len(self.hits) > 0:
             self.query = self.build_query(self.hits)
-            self.ar = self.db.query(self.prequery + self.query + self.postquery)
+            self.ar = self.db.query(
+                self.prequery + self.query + self.postquery
+                )
             self.print_payloads(self.ar)
         elif self.param is not None:
             self.ar = self.db.query(self.prequery + self.query, [self.param])
