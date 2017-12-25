@@ -36,9 +36,22 @@ def _Do(file_path):
 
     # Create ZIP Archive:
     try:
-        rc = subprocess.call(['7z', 'a', '-pinfected', '-y', '%s/%s.zip' % (OUTPUT_FOLDER, filename)] + [file_path])
+        rc = subprocess.call(
+            [
+                '7z',
+                'a',
+                '-pinfected',
+                '-y',
+                '%s/%s.zip' % (OUTPUT_FOLDER, filename)
+            ] + [file_path]
+        )
     except:
-        print("Seems like you don't have 7z in your path. Please install or add with:\n\tbrew install 7zip #(OSX)\n\tsudo apt-get install p7zip-full #(Linux)")
+        print(
+            "Seems like you don't have 7z in your path. " +
+            "Please install or add with:\n\t" +
+            "brew install 7zip #(OSX)\n\t" +
+            "sudo apt-get install p7zip-full #(Linux)"
+        )
         sys.exit(1)
 
     compressed_path = '%s/%s.zip' % (OUTPUT_FOLDER, filename)
