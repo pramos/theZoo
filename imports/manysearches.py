@@ -1,7 +1,7 @@
 from imports import globals
 from imports import db_handler
 from imports.prettytable import PrettyTable
-from imports.colors import *
+from imports.colors import bold, green, red
 
 
 class MuchSearch(object):
@@ -59,13 +59,20 @@ class MuchSearch(object):
         qlist = []
         for key, val in dic.items():
             if isinstance(val, (list, tuple)):
-                tmp = str(key) + ' in (' + ','.join(map(lambda x: '\'' + str(x) + '\'', val)) + ') '
+                tmp = str(key)
+                tmp += ' in ('
+                tmp += ','.join(map(lambda x: '\'' + str(x) + '\'', val))
+                tmp += ') '
             else:
                 tmp = str(key) + '=' + '\'' + str(val) + '\''
             qlist.append(' ' + tmp + ' ')
         return "and".join(qlist)
 
-    def print_payloads(self, m, fields=["#", "Type", "Language", "Architecture", "Platform", "Name"]):
+    def print_payloads(
+        self,
+        m,
+        fields=["#", "Type", "Language", "Architecture", "Platform", "Name"]
+    ):
         table = PrettyTable(fields)
         table.align = "l"
         for malware in m:
