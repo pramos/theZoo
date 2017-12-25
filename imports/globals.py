@@ -32,13 +32,24 @@ class init:
         github_add = "https://www.github.com/ytisf/theZoo"
         licensev = "GPL v3.0"
         fulllicense = appname + " Copyright (C) 2016 " + authors + "\n"
-        fulllicense += "This program comes with ABSOLUTELY NO WARRANTY; for details type '" + \
-            sys.argv[0] + " -w'.\n"
+        fulllicense += "This program comes with ABSOLUTELY NO WARRANTY;" + \
+            " for details type '" + sys.argv[0] + " -w'.\n"
         fulllicense += "This is free software, and you are welcome to redistribute it."
 
         usage = '\nUsage: ' + sys.argv[0] + \
             ' -s search_query -t trojan -p vb\n\n'
-        usage += 'The search engine can search by regular search or using specified arguments:\n\nOPTIONS:\n   -h  --help\t\tShow this message\n   -t  --type\t\tMalware type, can be virus/trojan/botnet/spyware/ransomeware.\n   -p  --language\tProgramming language, can be c/cpp/vb/asm/bin/java.\n   -u  --update\t\tUpdate malware index. Rebuilds main CSV file. \n   -s  --search\t\tSearch query for name or anything. \n   -v  --version\tPrint the version information.\n   -w\t\t\tPrint GNU license.\n'
+        usage += 'The search engine can search by regular search or '
+        usage += 'using specified arguments:\n\n'
+        usage += 'OPTIONS:\n   -h  --help\t\tShow this message\n'
+        usage += '-t  --type\t\t'
+        usage += 'Malware type, can be virus/trojan/botnet/spyware/ransomeware.'
+        usage += '\n\t-p  --language\t'
+        usage += 'Programming language, can be c/cpp/vb/asm/bin/java.\n'
+        usage += '   -u  --update\t\t'
+        usage += 'Update malware index. Rebuilds main CSV file. \n'
+        usage += '   -s  --search\t\tSearch query for name or anything. \n'
+        usage += '   -v  --version\tPrint the version information.\n'
+        usage += '   -w\t\t\tPrint GNU license.\n'
 
         conf_folder = 'conf'
         eula_file = conf_folder + '/eula_run.conf'
@@ -83,20 +94,64 @@ class vars:
     DEBUG_LEVEL = 0
 
     fulllicense = appname + " Copyright (C) 2017 " + authors + "\n"
-    fulllicense += "This program comes with ABSOLUTELY NO WARRANTY; for details type '" + \
-        sys.argv[0] + " -w'.\n"
+    fulllicense += "This program comes with ABSOLUTELY NO WARRANTY;" + \
+        " for details type '" + sys.argv[0] + " -w'.\n"
     fulllicense += "This is free software, and you are welcome to redistribute it."
 
     usage = '\nUsage: ' + sys.argv[0] + ' -s search_query -t trojan -p vb\n\n'
-    usage += 'The search engine can search by regular search or using specified arguments:\n\nOPTIONS:\n   -h  --help\t\tShow this message\n   -t  --type\t\tMalware type, can be virus/trojan/botnet/spyware/ransomeware.\n   -p  --language\tProgramming language, can be c/cpp/vb/asm/bin/java.\n   -u  --update\t\tUpdate malware index. Rebuilds main CSV file. \n   -s  --search\t\tSearch query for name or anything. \n   -v  --version\tPrint the version information.\n   -w\t\t\tPrint GNU license.\n'
+    usage += 'The search engine can search by regular search or using'
+    usage += ' specified arguments:\n\nOPTIONS:\n'
+    usage += '\t-h  --help\t\tShow this message\n'
+    usage += '\t-t  --type\t\t'
+    usage += 'Malware type, can be virus/trojan/botnet/spyware/ransomeware.\n'
+    usage += '\t-p  --language\tProgramming language, can be '
+    usage += 'c/cpp/vb/asm/bin/java.\n   -u  --update\t\t'
+    usage += 'Update malware index. Rebuilds main CSV file. \n'
+    usage += '\t-s  --search\t\tSearch query for name or anything. \n'
+    usage += '\t-v  --version\tPrint the version information.\n'
+    usage += '\t-w\t\t\tPrint GNU license.\n'
 
     # :todo: add filter usage
 
     opts = [
-        ("type", ("virus", "worm", "ransomware", "botnet", "apt", "rootkit", "trojan", "exploitkit", "dropper")),
-        ("architecture", ("x86", "x64", "arm", "web")),
-        ("platform", ("win32", "win64", "android", "ios", "mac", "*nix32", "*nix64", "symbian")),
-        ("language", ("c", "cpp", "asm", "bin", "java", "apk", "vb", "php"))]
+            ("type", (
+                "virus",
+                "worm",
+                "ransomware",
+                "botnet",
+                "apt",
+                "rootkit",
+                "trojan",
+                "exploitkit",
+                "dropper"
+            )),
+            ("architecture", (
+                "x86",
+                "x64",
+                "arm",
+                "web"
+            )),
+            ("platform", (
+                "win32",
+                "win64",
+                "android",
+                "ios",
+                "mac",
+                "*nix32",
+                "*nix64",
+                "symbian"
+            )),
+            ("language", (
+                "c",
+                "cpp",
+                "asm",
+                "bin",
+                "java",
+                "apk",
+                "vb",
+                "php"
+            )),
+        ]
 
     conf_folder = 'conf'
     eula_file = conf_folder + '/eula_run.conf'
@@ -117,10 +172,13 @@ class vars:
         maldb_banner += "        :ooooo/        /ooooo:      \n"
         maldb_banner += "        ```+MMd````````hMMo```      \n"
         maldb_banner += "        oNNNMMMNNNNNNNNMMMNNNs      \n"
-        maldb_banner += "     /oodMMdooyMMMMMMMMyoodMMdoo/   \ttheZoo " + version + "\n"
-        maldb_banner += "  `..dMMMMMy. :MMMMMMMM/  sMMMMMm..`\t DB ver. " + db_ver + "\n"
+        maldb_banner += "     /oodMMdooyMMMMMMMMyoodMMdoo/   \ttheZoo "
+        maldb_banner += version + "\n"
+        maldb_banner += "  `..dMMMMMy. :MMMMMMMM/  sMMMMMm..`\t DB ver. "
+        maldb_banner += db_ver + "\n"
         maldb_banner += "  dmmMMMMMMNmmNMMMMMMMMNmmNMMMMMMmmm\n"
-        maldb_banner += "  NMMyoodMMMMMMMMMMMMMMMMMMMMdoosMMM\t" + giturl + "\n"
+        maldb_banner += "  NMMyoodMMMMMMMMMMMMMMMMMMMMdoosMMM\t"
+        maldb_banner += giturl + "\n"
         maldb_banner += "  NMM-  sMMMNNNNNNNNNNNNNNNMMy  .MMM\n"
         maldb_banner += "  NMM-  sMMy``````````````sMMy  .MMM\n"
         maldb_banner += "  ooo.  :ooooooo+    +ooooooo/  `ooo\n"
@@ -151,16 +209,17 @@ class vars:
         maldb_banner += "              `-|__.--'\n"
 
     elif screen is 3:
-        maldb_banner = "           __  ___      __                               ____  ____\n"
+        maldb_banner = "            __  ___      __                               ____  ____\n"
         maldb_banner += "          /  |/  /___ _/ /      ______ _________        / __ \/ __ )\n"
         maldb_banner += "         / /|_/ / __ `/ / | /| / / __ `/ ___/ _ \______/ / / / __ |\n"
         maldb_banner += "        / /  / / /_/ / /| |/ |/ / /_/ / /  /  __/_____/ /_/ / /_/ /\n"
         maldb_banner += "       /_/  /_/\__,_/_/ |__/|__/\__,_/_/   \___/     /_____/_____/\n\n"
         maldb_banner += "                                version: " + version + "\n"
-        maldb_banner += "                                db_version: " + db_ver + "\n"
-        maldb_banner += "                                built by: " + authors + "\n"
-        maldb_banner += "                                maintained by: " + ', '.join(maintainers) + "\n"
-        maldb_banner += "                                github: " + giturl + "\n\n"
+        maldb_banner += " " * 32 + " db_version: " + db_ver + "\n"
+        maldb_banner += " " * 32 + " built by: " + authors + "\n"
+        maldb_banner += " " * 32 + " maintained by: " + ', '.join(maintainers)
+        maldb_banner += "\n"
+        maldb_banner += " " * 32 + " github: " + giturl + "\n\n"
 
     elif screen is 4:
         maldb_banner = "\n"
@@ -200,10 +259,12 @@ class vars:
         maldb_banner += "    |##XX:: :|\n"
         maldb_banner += "    |##Xn:: :|\n"
         maldb_banner += "    |##XU:: :|\n"
-        maldb_banner += "    |##Xn:: :|\ttheZoo " + version + "\n"
+        maldb_banner += "    |##Xn:: :|\t"
+        maldb_banner += "theZoo " + version + "\n"
         maldb_banner += "    |##XU:: :|\t  " + giturl + "\n"
         maldb_banner += "    |##XX:: :|\tauthors: " + authors + "\n"
-        maldb_banner += "    |##XX:: :|\tmaintained by: " + ', '.join(maintainers) + "\n"
+        maldb_banner += "    |##XX:: :|\tmaintained by: "
+        maldb_banner += ', '.join(maintainers) + "\n"
         maldb_banner += "    |##XX:: :|\tgithub: " + giturl + "\n"
         maldb_banner += "    |##,_,: :|\n"
         maldb_banner += "    |./ T \.:|\n"
