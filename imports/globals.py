@@ -164,7 +164,8 @@ class vars:
         db_ver = f.read()
 
     # ASCII Art is a must...
-    screen = random.randrange(1, 6)
+    # screen = random.randrange(1, 6)
+    screen = 3
 
     if screen is 1:
         maldb_banner = "\n"
@@ -183,9 +184,10 @@ class vars:
         maldb_banner += "  NMM-  sMMy``````````````sMMy  .MMM\n"
         maldb_banner += "  ooo.  :ooooooo+    +ooooooo/  `ooo\n"
         maldb_banner += "           /MMMMN    mMMMM+         \n"
-        maldb_banner += "                                 authors: " + authors + "\n"
-        maldb_banner += "                                 maintained by: " + ', '.join(maintainers) + "\n"
-        maldb_banner += "                                 github: " + giturl + "\n\n"
+        maldb_banner += "\t" * 5 + " authors: " + authors + "\n"
+        maldb_banner += "\t" * 5 + " maintained by: "
+        maldb_banner += ", ".join(maintainers) + "\n"
+        maldb_banner += "\t" * 5 + " github: " + giturl + "\n\n"
 
     elif screen is 2:
         maldb_banner = "           ____.----. \n"
@@ -209,17 +211,17 @@ class vars:
         maldb_banner += "              `-|__.--'\n"
 
     elif screen is 3:
-        maldb_banner = "           __  ___      __                               ____  ____\n"
-        maldb_banner += "          /  |/  /___ _/ /      ______ _________        / __ \/ __ )\n"
-        maldb_banner += "         / /|_/ / __ `/ / | /| / / __ `/ ___/ _ \______/ / / / __ |\n"
-        maldb_banner += "        / /  / / /_/ / /| |/ |/ / /_/ / /  /  __/_____/ /_/ / /_/ /\n"
-        maldb_banner += "       /_/  /_/\__,_/_/ |__/|__/\__,_/_/   \___/     /_____/_____/\n\n"
-        maldb_banner += "                                version: " + version + "\n"
-        maldb_banner += " " * 32 + " db_version: " + db_ver + "\n"
-        maldb_banner += " " * 32 + " built by: " + authors + "\n"
-        maldb_banner += " " * 32 + " maintained by: " + ', '.join(maintainers)
+        maldb_banner = "    __  ___      __                               ____  ____\n"
+        maldb_banner += "   /  |/  /___ _/ /      ______ _________        / __ \/ __ )\n"
+        maldb_banner += "  / /|_/ / __ `/ / | /| / / __ `/ ___/ _ \______/ / / / __ |\n"
+        maldb_banner += " / /  / / /_/ / /| |/ |/ / /_/ / /  /  __/_____/ /_/ / /_/ /\n"
+        maldb_banner += "/_/  /_/\__,_/_/ |__/|__/\__,_/_/   \___/     /_____/_____/\n\n"
+        maldb_banner += " " * 20 + " version: " + version + "\n"
+        maldb_banner += " " * 20 + " db_version: " + db_ver + "\n"
+        maldb_banner += " " * 20 + " built by: " + authors + "\n"
+        maldb_banner += " " * 20 + " maintained by: " + ', '.join(maintainers)
         maldb_banner += "\n"
-        maldb_banner += " " * 32 + " github: " + giturl + "\n\n"
+        maldb_banner += " " * 20 + " github: " + giturl + "\n\n"
 
     elif screen is 4:
         maldb_banner = "\n"
