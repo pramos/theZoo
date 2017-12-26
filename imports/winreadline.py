@@ -196,7 +196,7 @@ _issued = None
 
 
 def readline(step=_step, maxlen=_maxlen,
-        history=_history, histfile=_pyhistfile):
+             history=_history, histfile=_pyhistfile):
     """
     readline(step, maxlen, history, histfile)
     Read a line from the console.
@@ -316,8 +316,8 @@ def readline(step=_step, maxlen=_maxlen,
             if c_state == 0:
                 c_save = (buf.s, buf.p)
                 c_pos = buf.p
-                while c_pos > 0 and (buf.s[c_pos-1].isalnum()
-                        or buf.s[c_pos-1] in '_.'):
+                while (c_pos > 0) and (buf.s[c_pos-1].isalnum()
+                                       or buf.s[c_pos-1] in '_.'):
                     c_pos -= 1
                 c_text = buf.s[c_pos:buf.p]
 
@@ -347,7 +347,7 @@ def readline(step=_step, maxlen=_maxlen,
         if not history or history[-1] != buf.s[:-1]:
             history.append(buf.s[:-1])
         history = history[-1*_history_length:]
-        if histfile and type(histfile) is type(""):
+        if histfile and isinstance(histfile, str):
             fp = open(histfile, "w")
             for line in history:
                 if line:
