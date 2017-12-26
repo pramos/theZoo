@@ -20,14 +20,14 @@ import sys
 from os import remove, rename
 from imports import globals
 from imports import db_handler
-from imports.colors import *
+from imports.colors import red, green, bold
 
 # Compatilibility to Python3
 if sys.version_info.major == 3:
     from urllib.request import urlopen
 elif sys.version_info.major == 2:
     from urllib2 import urlopen
-    import urllib2
+    # import urllib2
 else:
     sys.stderr.write("What kind of sorcery is this?!\n")
 
@@ -62,10 +62,13 @@ class Updater:
             globals.vars.giturl_dl + globals.vars.maldb_ver_file)
         new_maldb_ver = response.read()
         if new_maldb_ver == curr_db_version:
-            print(green('[+]') + " theZoo is up to date.\n" + green('[+]') + " You are at " + new_maldb_ver + " which is the latest version.")
+            print(green('[+]') + " theZoo is up to date.\n" +
+                  green('[+]') + " You are at " + new_maldb_ver +
+                  " which is the latest version.")
             return
 
-        print(red('[+]') + " A newer version is available: " + new_maldb_ver + "!")
+        print(red('[+]') + " A newer version is available: "
+              + new_maldb_ver + "!")
         print(red('[+]') + " Updating...")
 
         # Get the new DB and update it
